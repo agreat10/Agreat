@@ -3,12 +3,12 @@
 <div class="container p-3">
     <div class="row pt-4">
         <div class="col-6">
-            <h2 class="text-primary">Список типов категорий</h2>
+            <h2 class="text-primary">Список товаров</h2>
             
         </div>
         <div class="col-6 text-right">
             <a asp-action="Create" class="btn btn-primary">
-                Создать новый тип приложения
+                <i class="fa-solid fa-plus"></i> &nbsp; Создать товар
             </a>
 
 
@@ -27,7 +27,7 @@
                     </th>
               
                     <th>
-                        
+                        Опции
                     </th>
                 </tr>
             </thead>
@@ -35,9 +35,19 @@
                 @foreach(var el in Model)
                 {
                     <tr>
-                        <td width="50%">@el.Name</td>
-                        
-                        <td ></td>
+                        <td width="70%">@el.Name</td>
+
+                        <td class="text-center">
+                            <div class="w-75 btn-group" role="group">
+                                <a  asp-route-Id="@el.Id" asp-action="Edit" class="btn btn-primary mx-1">
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a  asp-route-Id="@el.Id" asp-action="Delete" class="btn btn-danger mx-1">
+                                    <i class="fa-solid fa-trash"></i>
+                                </a>
+                            </div>
+
+                        </td>
                     </tr>
                 }
             </tbody>

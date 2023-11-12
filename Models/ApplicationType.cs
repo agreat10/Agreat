@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Agreat.Models
 {
@@ -6,6 +7,9 @@ namespace Agreat.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required(ErrorMessage ="Поле не должно быть пустым")]
+        [DisplayName("Наименование товара")]
         public string Name { get; set; }
     }
 }
