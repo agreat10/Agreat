@@ -7,9 +7,11 @@ namespace Agreat.Models
     {
         [Key]
         public int Id { get; set; }
-
+        [Required(ErrorMessage ="Поле не может быть пустым")]
         public string Name { get; set; }
         [DisplayName("Номер отображения")]
+        [Required(ErrorMessage = "Поле не может быть пустым")]
+        [Range(1,25,ErrorMessage ="Поле  должно быть больше 0")]
         public int DisplayOrder { get; set; }
     }
 }
