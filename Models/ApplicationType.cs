@@ -9,7 +9,7 @@ namespace Agreat.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage ="Поле не должно быть пустым")]
-        [DisplayName("Наименование товара")]
+        [DisplayName("Наименование типа товара")]
         public string Name { get; set; }
     }
 }

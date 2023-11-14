@@ -1,0 +1,109 @@
+﻿@model Agreat.Models.Product
+
+@{
+    var title = "Создать продукт";
+}
+
+<form method="post" enctype="multipart/form-data">
+    @{
+        if(Model.Id != 0)
+        {
+            title = "Редактировать продукт";
+            <input asp-for="Id" hidden />
+        }
+    }
+    
+    <div class="border p-3">
+
+        <div class="form-group row">
+            <h2 class="text-info pl-3">@title</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-8">
+                <div class="form-group row m-1">
+                    <div class="col-4">
+                        <label asp-for="Name">Имя продукта</label>
+                    </div>
+                    <div class="col-8 ">
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row m-1">
+                    <div class="col-4">
+                        <label asp-for="Price">Цена</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row m-1">
+                    <div class="col-4">
+                        <label asp-for="Description">Описание</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row m-1">
+                    <div class="col-4">
+                        Изображение
+                    </div>
+                    <div class="col-8">
+                        <input type="file" name="files" id="uploadBox" class="form-control" />
+                        
+                    </div>
+                </div>
+
+                <div class="form-group row m-1">
+                    <div class="col-4">
+                        <label asp-for="CategoryId"></label>
+                    </div>
+                    <div class="col-8">
+                        <select asp-for="CategoryId" asp-items="ViewBag.CategoryDropDown" class="form-control">
+                            <option disabled selected>--Выбор категории--</option>
+                        </select>
+                        <span asp-validation-for="CategoryId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-8 offset-4 row">
+                        <div class="col-4 ">
+                            @if(Model.Id != 0)
+                            {
+                                //update
+                                <input type="submit" class="btn btn-info w-100" value="Обновить" />
+
+                            }
+                            else
+                            {
+                                //create
+                                <input type="submit" onclick="return validateInput()" class="btn btn-primary w-100" value="Создать" />
+                            }
+                           
+                        </div>
+                        <div class="col-4 ">
+                            <a asp-action="Index" class="btn btn-success w-100"> <i class="fa-solid fa-right-from-bracket"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-4">
+                @*Keep this empty*@
+            </div>
+        </div>
+
+    </div>
+</form>
+@section Scripts{
+    @{
+        <param name="_ValidationScriptsPartial" />
+    }
+}
